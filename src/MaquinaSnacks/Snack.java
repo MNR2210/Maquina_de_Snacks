@@ -32,7 +32,7 @@ public class Snack {
         this.price = price;
     }
 
-    Puto el que lee
+//    Puto el que lee
 
     @Override
     public String toString(){
