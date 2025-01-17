@@ -32,8 +32,6 @@ public class Snack {
         this.price = price;
     }
 
-//    Puto el que lee
-
     @Override
     public String toString(){
         return "Producto{" + "idProducto=" + this.idSnack + ", nombre=" + this.snackName + ", precio=" + this.price + "}";
