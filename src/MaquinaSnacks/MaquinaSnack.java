@@ -43,7 +43,7 @@ public class MaquinaSnack {
         boolean salir = false;
         switch (opcion){
             case 1 -> comprarSnack(sc, productos);
-//            case 2 -> mostrarTicket(sc, )
+            case 2 -> mostrarTicket(productos);
         }
         return salir;
     }
@@ -59,9 +59,20 @@ public class MaquinaSnack {
                 snackEncontrado = true;
                 break;
             }
-            if (!snackEncontrado){
+            if (snackEncontrado){
                 System.out.println("Id de Snack no encontrado: " + idSnack);
             }
         }
+    }
+
+    private static void mostrarTicket(List<Snack> productos){
+        String ticket = "*** Ticket de Venta ***";
+        double total = 0.0;
+        for (var producto: productos){
+            ticket += "\n\t-" + producto.getSnackName() + " - $" + producto.getPrice();
+            total += producto.getPrice();
+        }
+        ticket += "\n\tTotal -> $" + total;
+        System.out.println(ticket);
     }
 }
