@@ -44,6 +44,11 @@ public class MaquinaSnack {
         switch (opcion){
             case 1 -> comprarSnack(sc, productos);
             case 2 -> mostrarTicket(productos);
+            case 3 -> agregarNuevoSnack(sc);
+            case 4 -> {
+                System.out.println("*** ¡Regresa Pronto! ***");
+                salir = true;
+            }
         }
         return salir;
     }
@@ -69,10 +74,20 @@ public class MaquinaSnack {
         String ticket = "*** Ticket de Venta ***";
         double total = 0.0;
         for (var producto: productos){
-            ticket += "\n\t-" + producto.getSnackName() + " - $" + producto.getPrice();
+            ticket += "\n\t- " + producto.getSnackName() + " - $" + producto.getPrice();
             total += producto.getPrice();
         }
         ticket += "\n\tTotal -> $" + total;
         System.out.println(ticket);
+    }
+
+    private static void agregarNuevoSnack(Scanner sc){
+        System.out.print("Nombre del Snack: ");
+        String name = sc.nextLine();
+        System.out.print("Precio del Snack: ");
+        double price = Double.parseDouble(sc.nextLine());
+        SnackServices.agregarSnack(new Snack(name, price));
+        System.out.println("Tú snack se ha agregado correctamente");
+        SnackServices.mostrarSnacks();
     }
 }
